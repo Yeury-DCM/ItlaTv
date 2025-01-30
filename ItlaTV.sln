@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{4D168B9A-71D2-4F29-A6DF-9DA499E3F5D7}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Domain", "ItlaTv.Domain\ItlaTv.Domain.csproj", "{8669DF2E-A199-4C76-94EA-5E49B247F92C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Application", "ItlaTv.Application\ItlaTv.Application.csproj", "{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{99ED9709-4150-4F0D-ABF9-779B4BFEB820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Web", "ItlaTv.Web\ItlaTv.Web.csproj", "{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,14 @@ Global
 		{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99ED9709-4150-4F0D-ABF9-779B4BFEB820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99ED9709-4150-4F0D-ABF9-779B4BFEB820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99ED9709-4150-4F0D-ABF9-779B4BFEB820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99ED9709-4150-4F0D-ABF9-779B4BFEB820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8669DF2E-A199-4C76-94EA-5E49B247F92C} = {4D168B9A-71D2-4F29-A6DF-9DA499E3F5D7}
 		{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E} = {4D168B9A-71D2-4F29-A6DF-9DA499E3F5D7}
+		{99ED9709-4150-4F0D-ABF9-779B4BFEB820} = {4D168B9A-71D2-4F29-A6DF-9DA499E3F5D7}
+		{25ADD0D1-F45C-4208-AE7D-FBB15376A93A} = {24E22579-E2BC-4513-99F3-FF9A5CEBE4C6}
 	EndGlobalSection
 EndGlobal
