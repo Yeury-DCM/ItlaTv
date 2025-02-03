@@ -25,10 +25,15 @@ namespace Persistence.Context
             modelBuilder.Entity<Studio>().ToTable("Studios");
             #endregion
 
+            #region property
+            modelBuilder.Entity<Serie>().Property(se => se.ID).ValueGeneratedOnAdd();
+            #endregion
+
             #region Primary Keys
             modelBuilder.Entity<Serie>().HasKey(se => se.ID);
             modelBuilder.Entity<Genre>().HasKey(g => g.ID);
             modelBuilder.Entity<Studio>().HasKey(st => st.ID);
+        
             #endregion
 
             #region Relationships
@@ -36,7 +41,7 @@ namespace Persistence.Context
             modelBuilder.Entity<Studio>()
                 .HasMany<Serie>()
                 .WithOne(se => se.studio)
-                .HasForeignKey(se => se.ID)
+                .HasForeignKey(se => se.StudioID)
                 .OnDelete(DeleteBehavior.Cascade);
 
             //Many Series Has Many Genres

@@ -5,7 +5,7 @@
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialMIgration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,8 @@ namespace Persistence.Migrations
                 name: "Series",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VideoPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -51,8 +52,8 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Series", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Series_Studios_ID",
-                        column: x => x.ID,
+                        name: "FK_Series_Studios_StudioID",
+                        column: x => x.StudioID,
                         principalTable: "Studios",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -86,6 +87,11 @@ namespace Persistence.Migrations
                 name: "IX_SerieGenre_SeriesID",
                 table: "SerieGenre",
                 column: "SeriesID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Series_StudioID",
+                table: "Series",
+                column: "StudioID");
         }
 
         /// <inheritdoc />

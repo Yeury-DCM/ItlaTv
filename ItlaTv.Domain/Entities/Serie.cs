@@ -10,6 +10,7 @@ namespace ItlaTv.Domain.Entities
         public string? VideoPath { get; set; }
         public int StudioID { get; set; } //FK
 
+
         // Navegation Property (Hace un Join)
         public Studio? studio { get; set; }
         public ICollection<Genre>? Genres { get; set; }

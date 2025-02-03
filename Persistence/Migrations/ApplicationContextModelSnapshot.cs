@@ -40,7 +40,10 @@ namespace Persistence.Migrations
             modelBuilder.Entity("ItlaTv.Domain.Entities.Serie", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -59,6 +62,8 @@ namespace Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("StudioID");
 
                     b.ToTable("Series", (string)null);
                 });
@@ -98,7 +103,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("ItlaTv.Domain.Entities.Studio", "studio")
                         .WithMany()
-                        .HasForeignKey("ID")
+                        .HasForeignKey("StudioID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
