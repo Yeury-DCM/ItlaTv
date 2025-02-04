@@ -40,7 +40,7 @@ namespace Persistence.Context
             //One Studio Has Many Series
             modelBuilder.Entity<Studio>()
                 .HasMany<Serie>()
-                .WithOne(se => se.studio)
+                .WithOne(se => se.Studio)
                 .HasForeignKey(se => se.StudioID)
                 .OnDelete(DeleteBehavior.Cascade);
 

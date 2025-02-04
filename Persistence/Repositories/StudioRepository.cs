@@ -11,15 +11,14 @@ namespace ItlaTv.Persistence.Repositories
     {
         private ILogger _logger;
 
-        public StudioRepository(ApplicationContext context, ILogger logger) : base(context)
+        public StudioRepository(ApplicationContext context, ILogger<SerieRepository> logger) : base(context)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
-        public async override Task<OperationResult<Studio>> Add(Studio entity)
+        public async override Task<OperationResult> Add(Studio entity)
         {
-            OperationResult<Studio> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -36,9 +35,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Studio>> Delete(Studio entity)
+        public async override Task<OperationResult> Delete(Studio entity)
         {
-            OperationResult<Studio> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -55,9 +54,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Studio>> Update(Studio entity)
+        public async override Task<OperationResult> Update(Studio entity)
         {
-            OperationResult<Studio> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -75,9 +74,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Studio>> GetAll()
+        public async override Task<OperationResult> GetAll()
         {
-            OperationResult<Studio> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -93,9 +92,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Studio>> GetById(int id)
+        public async override Task<OperationResult> GetById(int id)
         {
-            OperationResult<Studio> result = new();
+            OperationResult result = new();
 
             try
             {

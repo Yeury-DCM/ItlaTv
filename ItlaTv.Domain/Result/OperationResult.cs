@@ -1,6 +1,6 @@
 ﻿namespace ItlaTv.Domain.Result
 {
-    public class OperationResult <TEntity>
+    public class OperationResult 
     {
         public OperationResult()
         {
@@ -10,6 +10,6 @@
         public bool IsSucess { get; set; }
         public string? Message { get; set; }
 
-        public IQueryable<TEntity>? Data { get; set; }
+        public dynamic? Data { get; set; }
     }
 }

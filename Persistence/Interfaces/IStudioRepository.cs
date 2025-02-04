@@ -1,9 +1,9 @@
 ﻿using ItlaTv.Domain.Entities;
-using ItlaTv.Domain.Repositories;W
+using ItlaTv.Domain.Repositories;
 
 namespace ItlaTv.Persistence.Interfaces
 {
-    internal interface IStudioRepository : IBaseRepository <Studio>
+    public interface IStudioRepository : IBaseRepository <Studio>
     {
     }
 }

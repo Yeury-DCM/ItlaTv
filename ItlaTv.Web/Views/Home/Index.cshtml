@@ -1,28 +1,45 @@
-﻿@{
+﻿@model List<ItlaTv.Application.ViewModels.SerieViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4">
-            <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Nombre De La Serie</h5>
-                    <p class=" " fw-semibold">Genero</p>
-                    <p class="card-text">Descripcion super bacana de la serie ya tu sabe ma niga como es la cosa </p>
 
-                    <div class="d-flex justify-content-between align-items-center">
 
-                        <small class="text-body-secondary">Productora</small>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalle</button
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2>No hay series añadidas</h2>
+        }
+        else
+        {
+
+            @foreach (ItlaTv.Application.ViewModels.SerieViewModel serie in Model)
+            {
+                <div class="col-4">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" src="@serie.ImagePath" alt="Portada de @serie.Name" />
+
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">@serie.Name</h5>
+
+                            <p class="fw-semibold">Género</p>
+                            <p class="card-text">@serie.Description</p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-body-secondary">@serie.studio!.Name</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalle</button>
+                                </div>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
-            </div>
-        </div>
-        
+            }
+
+
+        }
+
+
     </div>
 </div>

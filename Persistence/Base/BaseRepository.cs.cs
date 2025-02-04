@@ -16,15 +16,15 @@ namespace ItlaTv.Persistence.Base
             _entities = _context.Set<TEntity>();
         }
 
-        public virtual async Task<OperationResult<TEntity>> Add(TEntity entity)
+        public virtual async Task<OperationResult> Add(TEntity entity)
         {
-            OperationResult<TEntity> result = new();
+            OperationResult result = new();
 
             try
             {
                 _entities.Add(entity);
                 await _context.SaveChangesAsync();
-                result.Data = (IQueryable<TEntity>)entity;
+                result.Data = entity;
             }
             catch (Exception ex)
             {
@@ -35,9 +35,9 @@ namespace ItlaTv.Persistence.Base
             return result;
         }
 
-        public virtual async Task<OperationResult<TEntity>> Delete(TEntity entity)
+        public virtual async Task<OperationResult> Delete(TEntity entity)
         {
-            OperationResult<TEntity> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -55,14 +55,14 @@ namespace ItlaTv.Persistence.Base
 
         }
 
-        public virtual async Task<OperationResult<TEntity>> GetAll()
+        public virtual async Task<OperationResult> GetAll()
         {
-            OperationResult<TEntity> result = new();
+            OperationResult result = new();
 
             try
             {
                 var data = await _entities.ToListAsync();
-                result.Data = (IQueryable<TEntity>)data!;
+                result.Data = data;
             }
             catch(Exception ex)
             {
@@ -73,14 +73,14 @@ namespace ItlaTv.Persistence.Base
             return result;
         }
 
-        public virtual async Task<OperationResult<TEntity>> GetById(int id)
+        public virtual async Task<OperationResult> GetById(int id)
         {
-            OperationResult<TEntity> result = new();
+            OperationResult result = new();
 
             try
             {
                 var data = await _entities.FindAsync(id);
-                result.Data = (IQueryable<TEntity>)data!;
+                result.Data = data;
 
                 if(data != null)
                 {
@@ -98,9 +98,9 @@ namespace ItlaTv.Persistence.Base
             return result;
         }
 
-        public virtual async Task<OperationResult<TEntity>> Update(TEntity entity)
+        public virtual async Task<OperationResult> Update(TEntity entity)
         {
-            OperationResult<TEntity> result = new();
+            OperationResult result = new();
 
             try
             {

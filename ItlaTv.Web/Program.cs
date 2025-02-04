@@ -1,3 +1,7 @@
+using ItlaTv.Application.Interfaces;
+using ItlaTv.Application.Services;
+using ItlaTv.Persistence.Interfaces;
+using ItlaTv.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 
@@ -9,6 +13,16 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//dependencies
+
+builder.Services.AddLogging();
+builder.Services.AddScoped<ISerieRepository, SerieRepository>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<IStudioRepository, StudioRepository>();
+
+builder.Services.AddTransient<ISerieService, SerieService>();
+
 
 var app = builder.Build();
 

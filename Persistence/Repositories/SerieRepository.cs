@@ -2,6 +2,7 @@
 using ItlaTv.Domain.Result;
 using ItlaTv.Persistence.Base;
 using ItlaTv.Persistence.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence.Context;
 
@@ -10,16 +11,18 @@ namespace ItlaTv.Persistence.Repositories
     public class SerieRepository : BaseRepository<Serie>, ISerieRepository
     {
         private ILogger _logger;
+        private ApplicationContext _context;
 
-        public SerieRepository(ApplicationContext context, ILogger logger) : base(context)
+        public SerieRepository(ApplicationContext context, ILogger<SerieRepository> logger) : base(context)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _context = context;
         }
 
 
-        public async override Task<OperationResult<Serie>> Add(Serie entity)
+        public async override Task<OperationResult> Add(Serie entity)
         {
-            OperationResult<Serie> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -36,9 +39,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Serie>> Delete(Serie entity)
+        public async override Task<OperationResult> Delete(Serie entity)
         {
-            OperationResult<Serie> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -55,9 +58,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Serie>> Update(Serie entity)
+        public async override Task<OperationResult> Update(Serie entity)
         {
-            OperationResult<Serie> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -75,13 +78,16 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Serie>> GetAll()
+        public async override Task<OperationResult> GetAll()
         {
-            OperationResult<Serie> result = new();
+            OperationResult result = new();
 
             try
             {
-                result = await base.GetAll();
+                var data = await _context.Set<Serie>().Include(s => s.Studio).ToListAsync();
+
+                result.Data = data;
+
             }
             catch (Exception ex)
             {
@@ -93,9 +99,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Serie>> GetById(int id)
+        public async override Task<OperationResult> GetById(int id)
         {
-            OperationResult<Serie> result = new();
+            OperationResult result = new();
 
             try
             {

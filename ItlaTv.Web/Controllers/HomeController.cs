@@ -1,3 +1,4 @@
+using ItlaTv.Application.Interfaces;
 using ItlaTv.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,16 +7,17 @@ namespace ItlaTv.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ISerieService _serieService;
+        public HomeController(ISerieService serieService)
         {
-            _logger = logger;
+            _serieService = serieService;
+
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _serieService.GetAllViewModel());
         }
 
         public IActionResult Privacy()

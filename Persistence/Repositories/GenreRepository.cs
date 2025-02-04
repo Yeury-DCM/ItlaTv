@@ -11,14 +11,14 @@ namespace ItlaTv.Persistence.Repositories
     {
         ILogger _logger;
 
-        public GenreRepository(ApplicationContext context, ILogger logger) : base(context)
+        public GenreRepository(ApplicationContext context, ILogger<SerieRepository> logger) : base(context)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async override Task<OperationResult<Genre>> Add(Genre entity)
+        public async override Task<OperationResult> Add(Genre entity)
         {
-            OperationResult<Genre> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -35,9 +35,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Genre>> Delete(Genre entity)
+        public async override Task<OperationResult> Delete(Genre entity)
         {
-            OperationResult<Genre> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -54,9 +54,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Genre>> Update(Genre entity)
+        public async override Task< OperationResult> Update(Genre entity)
         {
-            OperationResult<Genre> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -74,9 +74,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Genre>> GetAll()
+        public async override Task<OperationResult> GetAll()
         {
-            OperationResult<Genre> result = new();
+            OperationResult result = new();
 
             try
             {
@@ -92,9 +92,9 @@ namespace ItlaTv.Persistence.Repositories
             return result;
         }
 
-        public async override Task<OperationResult<Genre>> GetById(int id)
+        public async override Task<OperationResult> GetById(int id)
         {
-            OperationResult<Genre> result = new();
+            OperationResult result = new();
 
             try
             {

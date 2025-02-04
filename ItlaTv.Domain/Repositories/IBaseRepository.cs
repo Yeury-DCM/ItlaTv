@@ -4,11 +4,11 @@ namespace ItlaTv.Domain.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {
-        Task<OperationResult<TEntity>> Add(TEntity entity);
-        Task<OperationResult<TEntity>> Update(TEntity entity);
-        Task<OperationResult<TEntity>> Delete(TEntity entity);
-        Task<OperationResult<TEntity>> GetAll();
-        Task<OperationResult<TEntity>> GetByID(int id);  
+        Task<OperationResult> Add(TEntity entity);
+        Task<OperationResult> Update(TEntity entity);
+        Task<OperationResult> Delete(TEntity entity);
+        Task<OperationResult> GetAll();
+        Task<OperationResult> GetById(int id);  
 
     }
 }
