@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Domain", "ItlaTv.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Application", "ItlaTv.Application\ItlaTv.Application.csproj", "{50515DDA-0B86-48C0-91C5-8E7A4C6B3A7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{99ED9709-4150-4F0D-ABF9-779B4BFEB820}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Persistence", "Persistence\ItlaTv.Persistence.csproj", "{99ED9709-4150-4F0D-ABF9-779B4BFEB820}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv.Web", "ItlaTv.Web\ItlaTv.Web.csproj", "{25ADD0D1-F45C-4208-AE7D-FBB15376A93A}"
 EndProject

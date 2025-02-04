@@ -6,7 +6,7 @@ namespace ItlaTv.Domain.Entities
     public class Studio : BaseEntity
     {
         //Navegation Property
-        ICollection<Serie>? series;
+        ICollection<Serie>? series { get; set; }
     }
 
 }
