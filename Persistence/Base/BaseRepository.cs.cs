@@ -41,7 +41,7 @@ namespace ItlaTv.Persistence.Base
 
             try
             {
-                result.Data = (IQueryable<TEntity>) entity;
+                result.Data =  entity;
                 _entities.Remove(entity);
                 await _context.SaveChangesAsync();
             }
@@ -82,7 +82,7 @@ namespace ItlaTv.Persistence.Base
                 var data = await _entities.FindAsync(id);
                 result.Data = data;
 
-                if(data != null)
+                if(data == null)
                 {
                     result.IsSucess = false;
                     result.Message = "No se encontró la entidad";   
@@ -104,6 +104,7 @@ namespace ItlaTv.Persistence.Base
 
             try
             {
+
                 _entities.Update(entity);
                 await _context.SaveChangesAsync();
 

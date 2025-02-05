@@ -1,7 +1,6 @@
-﻿
-using ItlaTv.Domain.Entities;
+﻿using ItlaTv.Domain.Entities;
 
-namespace ItlaTv.Application.ViewModels
+namespace ItlaTv.Application.ViewModels.SerieVm
 {
     public class SerieViewModel
     {

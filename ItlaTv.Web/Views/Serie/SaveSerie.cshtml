@@ -1,0 +1,83 @@
+﻿@model ItlaTv.Application.ViewModels.SerieVm.SaveSerieViewModel
+@{
+    bool editMode = Model.Id != 0 ? true : false;
+    ViewData["Title"] = "Guardar serie";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class=" card border-1 border-info g-5">
+                <div class="card-header bg-info text-dark">
+                    <h4 class="fw-semi-bold">@(editMode ? $"Editando la serie: {Model.Name}" : "Agregando Nueva Serie")</h4>
+                </div>
+                <div class="card-body bg-dark text-light">
+
+                    <form method="post" asp-controller="Serie" asp-action="@(editMode? "Edit" : "Add")">
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label ">Nombre:</label>
+                            <input type="text" asp-for="Name" class="form-control bg-dark text-light" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Descripción:</label>
+                            <input type="text" asp-for="Description" class="form-control bg-dark text-light" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SelectedGenres" class="form-label">Generos:</label>
+                            <select asp-for="SelectedGenres" class="form-select bg-dark text-light" multiple>
+
+                                @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in Model.AvailableGenres!)
+                                {
+                                    <option value="@genre.ID">@genre.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="StudioID" class="form-label">Productora:</label>
+                            <select asp-for="StudioID" class="form-select bg-dark text-light">
+
+                                <option>Seleccione la productora</option>
+                                @foreach (ItlaTv.Application.ViewModels.StudioVm.StudioViewModel studio in Model.AvailableStudios!)
+                                {
+                                    <option value="@studio.Id">@studio.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="StudioID" class="text-danger"></span>
+
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ImagePath" class="form-label">URL de la portada:</label>
+                            <input type="url" asp-for="ImagePath" class="form-control bg-dark text-light" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="VideoPath" class="form-label">URL del video:</label>
+                            <input type="url" asp-for="VideoPath" class="form-control bg-dark text-light" />
+                        </div>
+
+                        <input type="hidden" asp-for="Id" />
+
+
+                        <a asp-action="Index" asp-controller="Serie" class="btn btn-outline-warning">Volver</a>
+                        <button type="submit" class="btn btn-outline-success">Guardar</button>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div><
+</div>

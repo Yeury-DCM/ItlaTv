@@ -64,19 +64,53 @@ namespace ItlaTv.Persistence.Repositories
 
             try
             {
-                result = await base.Update(entity);
-                result.Message = "Se actualizó la serie exitosamente";
+                // Cargar la entidad actual desde la base de datos con las relaciones
+                var existingSerie = await _context.Set<Serie>()
+                    .Include(s => s.Genres)
+                    .FirstOrDefaultAsync(s => s.ID == entity.ID);
 
+                if (existingSerie == null)
+                {
+                    result.IsSucess = false;
+                    result.Message = "La serie no existe.";
+                    return result;
+                }
+
+                // Actualizar las propiedades de la serie
+                existingSerie.Name = entity.Name;
+                existingSerie.StudioID = entity.StudioID;
+                existingSerie.Description = entity.Description;
+                existingSerie.ImagePath = entity.ImagePath;
+                existingSerie.VideoPath = entity.VideoPath;
+
+                // Eliminar las relaciones actuales (si es necesario)
+                existingSerie.Genres.Clear(); // Remover todos los géneros
+
+                // Añadir las nuevas relaciones de géneros
+                foreach (var genre in entity.Genres)
+                {
+                    if (!existingSerie.Genres.Any(g => g.ID == genre.ID))
+                    {
+                        existingSerie.Genres.Add(genre);
+                    }
+                }
+
+                // Guardar los cambios
+                await _context.SaveChangesAsync();
+
+                result.IsSucess = true;
+                result.Message = "Se actualizó la serie exitosamente";
             }
             catch (Exception ex)
             {
                 result.IsSucess = false;
-                result.Message = $"Ocurrió un error actualizando la serie: {ex}";
+                result.Message = $"Ocurrió un error actualizando la serie: {ex.Message}";
                 _logger.LogError(result.Message);
             }
 
             return result;
         }
+
 
         public async override Task<OperationResult> GetAll()
         {
@@ -84,7 +118,7 @@ namespace ItlaTv.Persistence.Repositories
 
             try
             {
-                var data = await _context.Set<Serie>().Include(s => s.Studio).ToListAsync();
+                var data = await _context.Set<Serie>().Include(s => s.Studio).Include(s => s.Genres).ToListAsync();
 
                 result.Data = data;
 
@@ -105,7 +139,8 @@ namespace ItlaTv.Persistence.Repositories
 
             try
             {
-                result = await base.GetById(id);
+                var data = await _context.Set<Serie>().Include(s => s.Studio).Include(s => s.Genres).FirstOrDefaultAsync(s => s.ID == id);
+                result.Data = data;
             }
             catch (Exception ex)
             {

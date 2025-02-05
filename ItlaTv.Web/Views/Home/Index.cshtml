@@ -1,35 +1,40 @@
-﻿@model List<ItlaTv.Application.ViewModels.SerieViewModel>
+﻿@model List<ItlaTv.Application.ViewModels.SerieVm.SerieViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid px-0">
 
+    <div class="row">
 
         @if (Model == null || Model.Count == 0)
         {
-            <h2>No hay series añadidas</h2>
+            <h2 class="text-light">No hay series añadidas</h2>
         }
         else
         {
 
-            @foreach (ItlaTv.Application.ViewModels.SerieViewModel serie in Model)
+            @foreach (ItlaTv.Application.ViewModels.SerieVm.SerieViewModel serie in Model)
             {
-                <div class="col-4">
-                    <div class="card shadow-sm">
-                        <img class="bd-placeholder-img card-img-top" src="@serie.ImagePath" alt="Portada de @serie.Name" />
+
+                <div class="col-3 mb-4">
+                    <div class="card shadow-sm bg-dark h-100 d-flex flex-column">
+
+                        <div class=" ratio ratio-16x9">
+                            <img class="ratio ratio-4x3 w-100 h-100 bd-placeholder-img card-img-top object-fit-cover" src="@serie.ImagePath" alt="Portada de @serie.Name" />
+
+                        </div>
 
                         <div class="card-body">
-                            <h5 class="card-title fw-bold">@serie.Name</h5>
+                            <h5 class="text-light card-title fw-bold">@serie.Name</h5>
 
-                            <p class="fw-semibold">Género</p>
-                            <p class="card-text">@serie.Description</p>
+                            <p class="text-light">@string.Join(" • ", serie.Genres!.Select(ge => ge.Name))</p>
+                      
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-body-secondary">@serie.studio!.Name</small>
+                                <small class="text-light">@serie.studio!.Name</small>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalle</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info">Detalle</button>
                                 </div>
                             </div>
                         </div>

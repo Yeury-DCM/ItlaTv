@@ -22,6 +22,10 @@ builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IStudioRepository, StudioRepository>();
 
 builder.Services.AddTransient<ISerieService, SerieService>();
+builder.Services.AddTransient<IGenreService, GenreService>();
+builder.Services.AddTransient<IStudioService, StudioService>();
+
+
 
 
 var app = builder.Build();
