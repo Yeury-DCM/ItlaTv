@@ -18,8 +18,10 @@ namespace ItlaTv.Application.ViewModels.SerieVm
         [Required(ErrorMessage = "El video es requerido")]
         public string VideoPath { get; set; }
 
-        [Required(ErrorMessage = "Los géneros son requeridos")]
-        public List<int> SelectedGenres { get; set; }
+        [Required(ErrorMessage = "El género es requerido")]
+        public int PrimaryGenre { get; set; }
+        
+        public int SecondaryGenre { get; set; }
 
         [Required(ErrorMessage = "La productora es requerida")]
         public int StudioID { get; set; }

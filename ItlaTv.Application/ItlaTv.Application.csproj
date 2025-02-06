@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Persistence\ItlaTv.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Base\" />
-  </ItemGroup>
-
 </Project>

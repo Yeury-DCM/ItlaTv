@@ -13,6 +13,7 @@ namespace ItlaTv.Domain.Entities
 
         // Navegation Property (Hace un Join)
         public Studio? Studio { get; set; }
+
         public ICollection<Genre>? Genres { get; set; }
 
 

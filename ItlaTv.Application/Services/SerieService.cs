@@ -18,7 +18,7 @@ namespace ItlaTv.Application.Services
         IGenreRepository _genreRepository;
 
 
-        public SerieService(ISerieRepository serieRepository, IStudioRepository studioRepository, IGenreRepository genreRepository) 
+        public SerieService(ISerieRepository serieRepository, IStudioRepository studioRepository, IGenreRepository genreRepository)
         {
             _serieRepository = serieRepository;
             _studioRepository = studioRepository;
@@ -30,7 +30,7 @@ namespace ItlaTv.Application.Services
         {
             var result = await _serieRepository.GetAll();
 
-            var seriesList =(ICollection<Serie>) result.Data!;
+            var seriesList = (ICollection<Serie>)result.Data!;
 
             return seriesList.Select(serie => new SerieViewModel
             {
@@ -51,7 +51,12 @@ namespace ItlaTv.Application.Services
         {
             OperationResult genreResult = await _genreRepository.GetAll();
             List<Genre> availableGenres = genreResult.Data!;
-            List<int> genresSelected = vm.SelectedGenres!;
+            List<int> genresSelected = new List<int>();
+
+            genresSelected.Add(vm.PrimaryGenre);
+
+            if (vm.SecondaryGenre > 0)
+                genresSelected.Add(vm.SecondaryGenre);
 
             List<Genre> genres = availableGenres.Where(ge => genresSelected.Contains(ge.ID)).ToList();
 
@@ -67,17 +72,21 @@ namespace ItlaTv.Application.Services
             };
 
             OperationResult result = await _serieRepository.Add(serie);
-            
+
         }
 
         public async Task Update(SaveSerieViewModel vm)
         {
             OperationResult genreResult = await _genreRepository.GetAll();
             List<Genre> availableGenres = genreResult.Data!;
-            List<int> genresSelected = vm.SelectedGenres!;
 
-            List<Genre> genres = availableGenres.Where(ge => genresSelected.Contains(ge.ID)).ToList();
 
+            Genre primaryGenre = availableGenres.FirstOrDefault(ge => ge.ID == vm.PrimaryGenre)!;
+
+            List<Genre> genres = new() { primaryGenre };
+
+            if (vm.SecondaryGenre > 0)
+                genres.Add(availableGenres.FirstOrDefault(ge => ge.ID == vm.SecondaryGenre)!);
 
             Serie serie = new()
             {
@@ -107,7 +116,9 @@ namespace ItlaTv.Application.Services
                 ImagePath = serie.ImagePath,
                 VideoPath = serie.VideoPath,
                 StudioID = serie.StudioID,
-                SelectedGenres = serie.Genres!.Select(ge => ge.ID).ToList(),
+                PrimaryGenre = serie.Genres.ToList()[0].ID,
+                SecondaryGenre = serie.Genres.ToArray().Length > 1 ? serie.Genres.ToList()[1].ID : 0
+
             };
 
             return vm;
@@ -134,7 +145,7 @@ namespace ItlaTv.Application.Services
                 VideoPath = serie.VideoPath,
                 studio = serie.Studio,
                 Genres = serie.Genres
-               
+
             };
 
             return vm;
@@ -144,7 +155,7 @@ namespace ItlaTv.Application.Services
         {
             List<SerieViewModel> listViewModels = await GetAllViewModels();
 
-            if(filter == null)
+            if (filter == null)
             {
                 return listViewModels;
             }
@@ -152,7 +163,7 @@ namespace ItlaTv.Application.Services
             //Name filter
 
 
-            if(!filter.Name.IsNullOrEmpty())
+            if (!filter.Name.IsNullOrEmpty())
             {
                 listViewModels = listViewModels.Where(serie => serie.Name.ToLower()!.Contains(filter.Name.ToLower()!)).ToList();
             }

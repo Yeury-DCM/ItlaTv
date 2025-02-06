@@ -1,0 +1,24 @@
+﻿@model ItlaTv.Application.ViewModels.StudioVm.SaveStudioViewModel
+@{
+    ViewData["Title"] = "Eliminar Serie";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-danger text-light ">
+                <h4>¿Estás seguro que quieres eliminar la productora @Model.Name?</h4>
+            </div>
+            <div class="card-body bg-dark">
+
+                <form method="post" asp-controller="Studio" asp-action="DeletePost">
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                    <a asp-controller="Studio" asp-action="Index" class="btn btn-outline-warning">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

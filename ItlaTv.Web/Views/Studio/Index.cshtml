@@ -1,0 +1,57 @@
+﻿@model List<ItlaTv.Application.ViewModels.StudioVm.StudioViewModel>
+@{
+    ViewData["Title"] = "Mantenimiento de productoras";
+}
+
+<div class="container-fluid px-0">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <a asp-controller="Studio" asp-action="Add" class="btn btn-success"> Agregar Nueva Productora</a>
+    </div>
+
+    <div class="row">
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No hay productoras agregadas</h2>
+        }
+        else
+        {
+            <div class="card bg-dark">
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%;">ID</th>
+                            <th scope="col" style="width: 70%;">Nombre</th>
+                            <th scope="col" style="width: 20%;">Acción</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (ItlaTv.Application.ViewModels.StudioVm.StudioViewModel studio in Model)
+                        {
+                            <tr>
+                                <td>@studio.Id</td>
+                                <td>@studio.Name</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm d-flex">
+                                        <a asp-controller="Studio" asp-action="Edit" asp-route-id="@studio.Id" type="button" class="btn btn-sm btn-outline-warning">Editar</a>
+                                        <a asp-controller="Studio" asp-action="Delete" asp-route-id="@studio.Id" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        }
+
+
+    </div>
+</div>

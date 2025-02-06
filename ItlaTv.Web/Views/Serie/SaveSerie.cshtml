@@ -24,21 +24,32 @@
 
                         <div class="mb-3">
                             <label asp-for="Description" class="form-label">Descripción:</label>
-                            <input type="text" asp-for="Description" class="form-control bg-dark text-light" />
+                            <textarea asp-for="Description" class="form-control bg-dark text-light"></textarea>
                         </div>
 
-
+                        
                         <div class="mb-3">
-                            <label asp-for="SelectedGenres" class="form-label">Generos:</label>
-                            <select asp-for="SelectedGenres" class="form-select bg-dark text-light" multiple>
-
+                            <label asp-for="PrimaryGenre" class="form-label">Genero principal</label>
+                            <select asp-for="PrimaryGenre" class="form-select bg-dark text-light">
+                                <option>Selecciona un género</option>
                                 @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
                                 {
                                     <option value="@genre.Id">@genre.Name</option>
                                 }
                             </select>
-                            <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+                            <span asp-validation-for="PrimaryGenre" class="text-danger"></span>
 
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SecondaryGenre" class="form-label">Genero Secundario</label>
+                            <select asp-for="SecondaryGenre" class="form-select bg-dark text-light">
+                                <option>Seleccione un genero</option>
+                                @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
+                                {
+                                    <option value="@genre.Id">@genre.Name</option>
+                                }
+                            </select>
 
                         </div>
 
