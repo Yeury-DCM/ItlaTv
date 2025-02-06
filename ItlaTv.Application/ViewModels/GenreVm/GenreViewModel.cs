@@ -1,12 +1,11 @@
 ﻿
+using ItlaTv.Application.ViewModels.Base;
 using ItlaTv.Domain.Entities;
 
 namespace ItlaTv.Application.ViewModels.GenreVm
 {
-    public class GenreViewModel
+    public class GenreViewModel : BaseViewModel
     {
-        public int ID { get; set; }
-        public string? Name { get; set; }
         public ICollection<Serie>? Series { get; set; }
     }
 }

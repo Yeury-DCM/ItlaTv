@@ -1,6 +1,6 @@
 ﻿@model List<ItlaTv.Application.ViewModels.SerieVm.SerieViewModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Itla TV+";
 }
 
 <div class="container-fluid px-0">
@@ -8,16 +8,15 @@
     <div class="row mt-2 mb-4 justify-content-center">
         <div class="card bg-dark py-2 rounded-4 p-3">
             <form asp-controller="Home" asp-action="Index" class="row g-2 align-items-center justify-content-center">
-                <!-- Campo de búsqueda más grande -->
+                
                 <div class="col-auto">
                     <input type="text" name="Name" placeholder="Buscar serie"
                            class="form-control bg-dark text-light rounded-4" style="width: 300px;">
                 </div>
 
-                <!-- Select de estudio -->
                 <div class="col-auto">
                     <select name="StudioID" class="form-select bg-dark text-light rounded-4">
-                        <option>Seleccione la productora</option>
+                        <option>Filtrar por productora</option>
                         @foreach (ItlaTv.Application.ViewModels.StudioVm.StudioViewModel studio in ViewBag.Studios)
                         {
                             <option value="@studio.Id">@studio.Name</option>
@@ -25,18 +24,18 @@
                     </select>
                 </div>
 
-                <!-- Dropdown de géneros -->
+        
                 <div class="col-auto">
                     <div class="dropdown">
                         <button class="btn btn-secondary rounded-4 dropdown-toggle bg-dark text-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Selecciona los géneros
+                            Filtrar por géneros
                         </button>
                         <ul class="dropdown-menu bg-dark text-light" aria-labelledby="dropdownMenuButton">
                             @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
                             {
                                 <li>
                                     <label class="dropdown-item text-light">
-                                        <input type="checkbox" value="@genre.ID" class="form-check-input" id="@genre.ID" name="GenresIds">
+                                        <input type="checkbox" value="@genre.Id" class="form-check-input" id="@genre.Id" name="GenresIds">
                                         @genre.Name
                                     </label>
                                 </li>
@@ -45,9 +44,8 @@
                     </div>
                 </div>
 
-                <!-- Botón de enviar -->
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-outline-success">Buscar</button>
+                    <button type="submit" class="btn btn-outline-info rounded-4">  Buscar  </button>
                 </div>
             </form>
         </div>
@@ -60,7 +58,7 @@
 
         @if (Model == null || Model.Count == 0)
         {
-            <h2 class="text-light">No hay series añadidas</h2>
+            <h2 class="text-light">No se encontraron series</h2>
         }
         else
         {
@@ -72,7 +70,10 @@
                     <div class="card shadow-sm bg-dark h-100 d-flex flex-column rounded-3">
 
                         <div class="ratio ratio-5x7">
+                        <a asp-controller="Serie" asp-action="Detail" asp-route-id="@serie.ID">
                             <img class="w-100 h-100 object-fit-cover" src="@serie.ImagePath" alt="Portada de @serie.Name" />
+                        </a>
+                          
                         </div>
 
                         <div class="card-body">

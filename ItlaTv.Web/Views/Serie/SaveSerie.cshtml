@@ -34,7 +34,7 @@
 
                                 @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
                                 {
-                                    <option value="@genre.ID">@genre.Name</option>
+                                    <option value="@genre.Id">@genre.Name</option>
                                 }
                             </select>
                             <span asp-validation-for="SelectedGenres" class="text-danger"></span>
@@ -60,11 +60,13 @@
                         <div class="mb-3">
                             <label asp-for="ImagePath" class="form-label">URL de la portada:</label>
                             <input type="url" asp-for="ImagePath" class="form-control bg-dark text-light" />
+                            <span asp-validation-for="StudioID" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
                             <label asp-for="VideoPath" class="form-label">URL del video:</label>
                             <input type="url" asp-for="VideoPath" class="form-control bg-dark text-light" />
+                            <span asp-validation-for="StudioID" class="text-danger"></span>
                         </div>
 
                         <input type="hidden" asp-for="Id" />

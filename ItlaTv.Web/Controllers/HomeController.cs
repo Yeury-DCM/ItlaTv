@@ -24,7 +24,7 @@ namespace ItlaTv.Web.Controllers
         public async Task<IActionResult> Index(FilterSerieViewModel filter)
         {
             ViewBag.Studios = await _studioService.GetAllViewModels();
-            ViewBag.Genres = await _genreService.GetAllViewModel();
+            ViewBag.Genres = await _genreService.GetAllViewModels();
 
             return View(await _serieService.GetFilteredViewModels(filter));
         }

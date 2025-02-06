@@ -1,0 +1,58 @@
+﻿@model List<ItlaTv.Application.ViewModels.GenreVm.GenreViewModel>
+@{
+    ViewData["Title"] = "Mantenimiento de géneros";
+}
+
+<div class="container-fluid px-0">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <a asp-controller="Genre" asp-action="Add" class="btn btn-success"> Agregar Nuevo Género</a>
+    </div>
+
+    <div class="row">
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No hay géneros disponibles</h2>
+        }
+        else
+        {
+            <div class="card bg-dark">
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%;">ID</th>
+                            <th scope="col" style="width: 70%;">Nombre</th>
+                            <th scope="col" style="width: 20%;">Acción</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in Model)
+                        {
+                            <tr>
+
+                                <td>@genre.Id</td>
+                                <td>@genre.Name</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm d-flex">
+                                        <a asp-controller="Genre" asp-action="Edit" asp-route-id="@genre.Id" type="button" class="btn btn-sm btn-outline-warning">Editar</a>
+                                        <a asp-controller="Genre" asp-action="Delete" asp-route-id="@genre.Id" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        }
+
+
+    </div>
+</div>

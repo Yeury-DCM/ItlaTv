@@ -26,7 +26,7 @@ namespace ItlaTv.Application.Services
 
         }
 
-        public async Task<List<SerieViewModel>> GetAllViewModel()
+        public async Task<List<SerieViewModel>> GetAllViewModels()
         {
             var result = await _serieRepository.GetAll();
 
@@ -142,7 +142,7 @@ namespace ItlaTv.Application.Services
 
         public async Task<List<SerieViewModel>> GetFilteredViewModels(FilterSerieViewModel filter)
         {
-            List<SerieViewModel> listViewModels = await GetAllViewModel();
+            List<SerieViewModel> listViewModels = await GetAllViewModels();
 
             if(filter == null)
             {

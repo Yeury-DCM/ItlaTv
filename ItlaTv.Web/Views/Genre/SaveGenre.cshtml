@@ -1,0 +1,33 @@
+﻿@model ItlaTv.Application.ViewModels.GenreVm.SaveGenreViewModel
+@{
+    bool editMode = Model.Id != 0 ? true : false;
+    ViewData["Title"] = "Guardar Género";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class=" card border-1 border-info g-5">
+                <div class="card-header bg-info text-dark">
+                    <h4 class="fw-semi-bold">@(editMode ? $"Editando el género: {Model.Name}" : "Agregando nuevo género")</h4>
+                </div>
+                <div class="card-body bg-dark text-light">
+
+                    <form method="post" asp-controller="Genre" asp-action="@(editMode? "Edit" : "Add")">
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label ">Nombre:</label>
+                            <input type="text" asp-for="Name" class="form-control bg-dark text-light"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <a asp-action="Index" asp-controller="Genre" class="btn btn-outline-warning">Volver</a>
+                        <button type="submit" class="btn btn-outline-success">Guardar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div><
+</div>

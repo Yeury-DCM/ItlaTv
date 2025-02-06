@@ -4,7 +4,7 @@ namespace ItlaTv.Application.Base
 {
     public interface IBaseService <TViewModel, TSaveViewModel> 
     {
-        Task<List<TViewModel>> GetAllViewModel();
+        Task<List<TViewModel>> GetAllViewModels();
         Task<TViewModel> GetById(int id);
         Task<TSaveViewModel> GetByIdSaveViewModel(int id);
         Task Delete(int id);

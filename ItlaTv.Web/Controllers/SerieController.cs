@@ -23,13 +23,13 @@ namespace ItlaTv.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _serieService.GetAllViewModel());
+            return View(await _serieService.GetAllViewModels());
         }
 
         public async Task<IActionResult> Add()
         {
             SaveSerieViewModel saveSerieViewModel = new();
-            ViewBag.Genres = await _genreService.GetAllViewModel();
+            ViewBag.Genres = await _genreService.GetAllViewModels();
             ViewBag.Studios = await _studioService.GetAllViewModels();
 
             return View("SaveSerie", saveSerieViewModel);
@@ -38,6 +38,8 @@ namespace ItlaTv.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(SaveSerieViewModel vm)
         {
+            ViewBag.Genres = await _genreService.GetAllViewModels();
+            ViewBag.Studios = await _studioService.GetAllViewModels();
 
             if (!ModelState.IsValid)
             {
@@ -52,7 +54,7 @@ namespace ItlaTv.Web.Controllers
 
 
             SaveSerieViewModel saveSerieViewModel = await _serieService.GetByIdSaveViewModel(id);
-            ViewBag.Genres = await _genreService.GetAllViewModel();
+            ViewBag.Genres = await _genreService.GetAllViewModels();
             ViewBag.Studios = await _studioService.GetAllViewModels();
 
             return View("SaveSerie", saveSerieViewModel);
@@ -61,6 +63,9 @@ namespace ItlaTv.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(SaveSerieViewModel vm)
         {
+            ViewBag.Genres = await _genreService.GetAllViewModels();
+            ViewBag.Studios = await _studioService.GetAllViewModels();
+
 
             if (!ModelState.IsValid)
             {

@@ -1,7 +1,9 @@
 ﻿
+using ItlaTv.Application.ViewModels.Base;
+
 namespace ItlaTv.Application.ViewModels.StudioVm
 {
-    internal class SaveStudioViewModel
+    public class SaveStudioViewModel : BaseViewModel
     {
     }
 }
