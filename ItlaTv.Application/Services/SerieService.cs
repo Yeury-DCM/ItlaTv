@@ -6,6 +6,7 @@ using ItlaTv.Domain.Entities;
 using ItlaTv.Domain.Result;
 using ItlaTv.Persistence.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ItlaTv.Application.Services
@@ -100,6 +101,7 @@ namespace ItlaTv.Application.Services
             Serie serie = result.Data!;
             SaveSerieViewModel vm = new SaveSerieViewModel
             {
+                Id = serie.ID,
                 Name = serie.Name,
                 Description = serie.Description,
                 ImagePath = serie.ImagePath,
@@ -120,9 +122,61 @@ namespace ItlaTv.Application.Services
             await _serieRepository.Delete(serie);
         }
 
-        public Task<SaveSerieViewModel> GetById(int id)
+        public async Task<SerieViewModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _serieRepository.GetById(id);
+            Serie serie = result.Data!;
+            SerieViewModel vm = new SerieViewModel
+            {
+                Name = serie.Name,
+                Description = serie.Description,
+                ImagePath = serie.ImagePath,
+                VideoPath = serie.VideoPath,
+                studio = serie.Studio,
+                Genres = serie.Genres
+               
+            };
+
+            return vm;
+        }
+
+        public async Task<List<SerieViewModel>> GetFilteredViewModels(FilterSerieViewModel filter)
+        {
+            List<SerieViewModel> listViewModels = await GetAllViewModel();
+
+            if(filter == null)
+            {
+                return listViewModels;
+            }
+
+            //Name filter
+
+
+            if(!filter.Name.IsNullOrEmpty())
+            {
+                listViewModels = listViewModels.Where(serie => serie.Name.ToLower()!.Contains(filter.Name.ToLower()!)).ToList();
+            }
+
+            //Studio Filter
+
+
+            if (filter.StudioId > 0)
+            {
+                listViewModels = listViewModels.Where(serie => serie.studio!.ID == filter.StudioId).ToList();
+            }
+
+
+            //Genre filter
+
+            if (!filter.GenresIds.IsNullOrEmpty())
+            {
+                listViewModels = listViewModels
+                    .Where(serie => serie.Genres!.Any(genre => filter.GenresIds!.Contains(genre.ID)))
+                    .ToList();
+            }
+
+            return listViewModels;
+
         }
     }
 }

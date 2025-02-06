@@ -1,0 +1,36 @@
+﻿@model ItlaTv.Application.ViewModels.SerieVm.SerieViewModel
+@{
+    ViewData["Title"] = "Home Page";
+
+    // Extract ID from youtube video
+    string videoId = Model.VideoPath.Split('/').Last().Split('?').First();
+}
+
+
+<div class="container-fluid px-0">
+
+    <div class="row card bg-black border-info">
+
+        <iframe class="mb-3" width="100%" height="500px" src="https://www.youtube.com/embed/@videoId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+       <div class="card-body">
+
+            <div class="d-flex justify-content-between align-text-top mb-2">
+
+                <div class="mb-2">
+                    <h3 class="text-light fw-bold">@Model.Name</h3>
+                    <p class="text-light">@string.Join(" • ", @Model.Genres!.Select(ge => ge.Name))</p>
+                </div>
+
+                <p class="text-light mt-2">@Model.studio.Name</p>
+            </div>
+
+            <p class="text-light">@Model.Description</p>
+       </div>
+
+    </div>
+
+
+</div>
+</div>

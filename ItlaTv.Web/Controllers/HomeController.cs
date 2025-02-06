@@ -1,4 +1,5 @@
 using ItlaTv.Application.Interfaces;
+using ItlaTv.Application.ViewModels.SerieVm;
 using ItlaTv.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,15 +10,23 @@ namespace ItlaTv.Web.Controllers
     {
 
         private readonly ISerieService _serieService;
-        public HomeController(ISerieService serieService)
+        private readonly IGenreService _genreService;
+        private readonly IStudioService _studioService;
+
+        public HomeController(ISerieService serieService, IStudioService studioService, IGenreService genreService)
         {
             _serieService = serieService;
+            _studioService = studioService;
+            _genreService = genreService;
 
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(FilterSerieViewModel filter)
         {
-            return View(await _serieService.GetAllViewModel());
+            ViewBag.Studios = await _studioService.GetAllViewModels();
+            ViewBag.Genres = await _genreService.GetAllViewModel();
+
+            return View(await _serieService.GetFilteredViewModels(filter));
         }
 
         public IActionResult Privacy()

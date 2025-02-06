@@ -1,11 +1,11 @@
-﻿using ItlaTv.Application.ViewModels.GenreVm;
+﻿using ItlaTv.Application.Base;
+using ItlaTv.Application.ViewModels.GenreVm;
 
 
 namespace ItlaTv.Application.Interfaces
 {
-    public interface IGenreService
+    public interface IGenreService : IBaseService<GenreViewModel, SaveGenreViewModel>
     {
-        Task<List<GenreViewModel>> GetAllViewModel();
 
     }
 }

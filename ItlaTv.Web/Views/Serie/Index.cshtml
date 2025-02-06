@@ -1,6 +1,6 @@
 ﻿@model List<ItlaTv.Application.ViewModels.SerieVm.SerieViewModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Mantenimiento de series";
 }
 
 <div class="container-fluid px-0">
@@ -50,8 +50,9 @@
                                 <td>
                                     <div class="btn-group d-flex justify-content-between">
 
-                                        <a asp-controller="Serie" asp-action="Edit" asp-route-id="@serie.ID" type="button" class="btn btn-sm btn-outline-info">Editar</a>
-                                        <a asp-controller="Serie" asp-action="Delete" asp-route-id="@serie.ID" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                        <a asp-controller="Serie" asp-action="Detail" asp-route-id="@serie.ID" type="button" class="btn btn-sm btn-outline-info">Detalle</a>
+                                        <a asp-controller="Serie" asp-action="Edit" asp-route-id="@serie.ID" type="button" class="btn btn-sm btn-outline-warning">Editar</a>
+                                        <a asp-controller="Serie" asp-action="Delete" asp-route-id ="@serie.ID" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     </div>
                                 </td>
 

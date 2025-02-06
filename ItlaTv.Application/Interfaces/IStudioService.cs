@@ -5,7 +5,7 @@ namespace ItlaTv.Application.Interfaces
 {
     public interface IStudioService
     {
-        Task<List<StudioViewModel>> GetStudioViewModels();
+        Task<List<StudioViewModel>> GetAllViewModels();
 
     }
 }

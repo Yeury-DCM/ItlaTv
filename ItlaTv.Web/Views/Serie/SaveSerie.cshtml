@@ -27,11 +27,12 @@
                             <input type="text" asp-for="Description" class="form-control bg-dark text-light" />
                         </div>
 
+
                         <div class="mb-3">
                             <label asp-for="SelectedGenres" class="form-label">Generos:</label>
                             <select asp-for="SelectedGenres" class="form-select bg-dark text-light" multiple>
 
-                                @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in Model.AvailableGenres!)
+                                @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
                                 {
                                     <option value="@genre.ID">@genre.Name</option>
                                 }
@@ -46,7 +47,7 @@
                             <select asp-for="StudioID" class="form-select bg-dark text-light">
 
                                 <option>Seleccione la productora</option>
-                                @foreach (ItlaTv.Application.ViewModels.StudioVm.StudioViewModel studio in Model.AvailableStudios!)
+                                @foreach (ItlaTv.Application.ViewModels.StudioVm.StudioViewModel studio in ViewBag.Studios)
                                 {
                                     <option value="@studio.Id">@studio.Name</option>
                                 }

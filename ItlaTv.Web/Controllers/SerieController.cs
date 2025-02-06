@@ -28,9 +28,9 @@ namespace ItlaTv.Web.Controllers
 
         public async Task<IActionResult> Add()
         {
-            SaveSerieViewModel saveSerieViewModel = new();    
-            saveSerieViewModel.AvailableGenres = await _genreService.GetAllViewModel();
-            saveSerieViewModel.AvailableStudios = await _studioService.GetStudioViewModels();
+            SaveSerieViewModel saveSerieViewModel = new();
+            ViewBag.Genres = await _genreService.GetAllViewModel();
+            ViewBag.Studios = await _studioService.GetAllViewModels();
 
             return View("SaveSerie", saveSerieViewModel);
         }
@@ -38,9 +38,7 @@ namespace ItlaTv.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(SaveSerieViewModel vm)
         {
-            SaveSerieViewModel saveSerieViewModel = vm;
-            saveSerieViewModel.AvailableGenres = await _genreService.GetAllViewModel();
-            saveSerieViewModel.AvailableStudios = await _studioService.GetStudioViewModels();
+
             if (!ModelState.IsValid)
             {
                 return View("SaveSerie",vm);
@@ -54,9 +52,8 @@ namespace ItlaTv.Web.Controllers
 
 
             SaveSerieViewModel saveSerieViewModel = await _serieService.GetByIdSaveViewModel(id);
-            saveSerieViewModel.AvailableGenres = await _genreService.GetAllViewModel();
-            saveSerieViewModel.AvailableStudios = await _studioService.GetStudioViewModels();
-
+            ViewBag.Genres = await _genreService.GetAllViewModel();
+            ViewBag.Studios = await _studioService.GetAllViewModels();
 
             return View("SaveSerie", saveSerieViewModel);
         }
@@ -86,6 +83,13 @@ namespace ItlaTv.Web.Controllers
         {
             await _serieService.Delete(id);
             return RedirectToRoute(new { controller = "Serie", Action = "Index" });
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            SerieViewModel vm = await _serieService.GetById(id);
+
+            return View("SerieDetail", vm); 
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ItlaTv.Application.Services
             _studioRepository = studioRepository;
         }
 
-        public async Task<List<StudioViewModel>> GetStudioViewModels()
+        public async Task<List<StudioViewModel>> GetAllViewModels()
         {
             OperationResult result = await _studioRepository.GetAll();
             var studiosList = (List<Studio>)result.Data!;

@@ -14,17 +14,14 @@ namespace ItlaTv.Application.ViewModels.SerieVm
 
         public string? Description { get; set; }
 
+        [Required(ErrorMessage = "La imagen es requerida")]
         public string? ImagePath { get; set; }
 
-
+        [Required(ErrorMessage = "El video es requerido")]
         public string? VideoPath { get; set; }
-
-        public List<GenreViewModel>? AvailableGenres { get; set; }
 
         [Required(ErrorMessage = "Los géneros son requeridos")]
         public List<int>? SelectedGenres { get; set; }
-
-        public List<StudioViewModel>? AvailableStudios { get; set; }
 
         [Required(ErrorMessage = "La productora es requerida")]
         public int StudioID { get; set; }
