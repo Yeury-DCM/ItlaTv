@@ -61,8 +61,8 @@ ITLATV
 - **ASP.NET Core MVC** para la capa web.
 - **Entity Framework Core** para persistencia de datos.
 - **C# y .NET** como tecnologías principales.
-- **Razor y Bosstrap** para la interfaz de usuario.
-d
+- **Razor y Bootstrap** para la interfaz de usuario.
+
 ## 🚀 **Cómo Ejecutar el Proyecto**
 1. Restaurar paquetes NuGet:
    ```sh
