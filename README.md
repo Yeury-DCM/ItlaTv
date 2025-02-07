@@ -24,10 +24,9 @@ ITLATV
 │── backend
 │   │── ItlaTv.Application  (Casos de uso, servicios y ViewModels)
 │   │── ItlaTv.Domain       (Entidades y contratos - Reglas de negocio puras)
-│   │── ItlaTv.Persistence  (Implementación de repositorios y contexto de BD)
-│   │── ItlaTv.Web          (Capa de presentación - Inyección de dependencias y API)
+│   │── ItlaTv.Persistence  (Implementación de repositorios y contexto de BD)   
 │── frontend
-│   │── ItlaTv.WebApp       (Frontend del sistema - Interfaz de usuario)
+│   │── ItlaTv.Web          (Capa de presentación - Inyección de dependencias )
 ```
 
 ## 📂 Capas y Responsabilidades
