@@ -1,7 +1,7 @@
 # ITLATV 
 
 ## 📌 Descripción
-Esta es una app de streaming que se creó utilizando ASP .NET Core 9 MVC y EF Core. En esta se implementa una **arquitectura basada en Clean Architecture **, asegurando una clara separación de responsabilidades entre sus capas.
+Esta es una app de streaming que se creó utilizando ASP .NET Core 9 MVC y EF Core. En esta se implementa una **arquitectura basada en Clean Architecture**, asegurando una clara separación de responsabilidades entre sus capas.
 
 ## 🖼️ Imágenes del proyecto
 
