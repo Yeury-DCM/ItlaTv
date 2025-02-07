@@ -40,7 +40,7 @@ ITLATV
 ### **2️⃣ ItlaTv.Application (Capa de Aplicación)**
 - Contiene la lógica de los **casos de uso y servicios**.
 - Interactúa con el dominio pero no accede directamente a la persistencia.
-- Define **ViewModels** y DTOs para desacoplar el dominio de la UI.
+- Define **ViewModels** para desacoplar el dominio de la UI.
 
 ### **3️⃣ ItlaTv.Persistence (Capa de Persistencia)**
 - Implementa los repositorios definidos en `Domain`.
@@ -53,8 +53,7 @@ ITLATV
 
 
 ## 🎯 **Principios Clave**
-✅ **Clean Architecture**: El dominio permanece independiente de detalles de infraestructura.  
-✅ **DDD (Domain-Driven Design)**: Enfatiza el diseño centrado en el dominio y reglas de negocio.  
+✅ **Clean Architecture**: El dominio permanece independiente de detalles de infraestructura.    
 ✅ **Inversión de Dependencias**: Las capas internas no dependen de implementaciones externas.  
 ✅ **Separación de Responsabilidades**: Cada capa tiene un propósito bien definido.  
 ✅ **Escalabilidad y Mantenibilidad**: Facilita la evolución del proyecto con mínimo impacto.
@@ -64,7 +63,7 @@ ITLATV
 - **Entity Framework Core** para persistencia de datos.
 - **C# y .NET** como tecnologías principales.
 - **Razor y Bosstrap** para la interfaz de usuario.
-
+d
 ## 🚀 **Cómo Ejecutar el Proyecto**
 1. Restaurar paquetes NuGet:
    ```sh
