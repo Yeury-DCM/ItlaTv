@@ -1,6 +1,6 @@
 using ItlaTv.Application.Interfaces;
 using ItlaTv.Application.Services;
-using ItlaTv.Persistence.Interfaces;
+using ItlaTv.Domain.Repositories.Interfaces;
 using ItlaTv.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;

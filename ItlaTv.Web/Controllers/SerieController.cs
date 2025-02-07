@@ -1,10 +1,5 @@
 ﻿using ItlaTv.Application.Interfaces;
-using ItlaTv.Application.Services;
-using ItlaTv.Application.ViewModels;
-using ItlaTv.Application.ViewModels.GenreVm;
 using ItlaTv.Application.ViewModels.SerieVm;
-using ItlaTv.Domain.Entities;
-using ItlaTv.Persistence.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItlaTv.Web.Controllers
@@ -69,7 +64,7 @@ namespace ItlaTv.Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("SaveSerie");
+                return View("SaveSerie", vm);
             }
 
             await _serieService.Update(vm);

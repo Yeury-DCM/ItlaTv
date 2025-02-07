@@ -20,8 +20,8 @@ namespace ItlaTv.Application.ViewModels.SerieVm
 
         [Required(ErrorMessage = "El género es requerido")]
         public int PrimaryGenre { get; set; }
-        
-        public int SecondaryGenre { get; set; }
+
+        public int SecondaryGenre { get; set; } 
 
         [Required(ErrorMessage = "La productora es requerida")]
         public int StudioID { get; set; }

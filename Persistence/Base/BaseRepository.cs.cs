@@ -1,4 +1,4 @@
-﻿using ItlaTv.Domain.Repositories;
+﻿using ItlaTv.Domain.Repositories.Base;
 using ItlaTv.Domain.Result;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;

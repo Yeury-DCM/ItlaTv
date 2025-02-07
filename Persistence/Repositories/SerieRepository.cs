@@ -1,7 +1,7 @@
 ﻿using ItlaTv.Domain.Entities;
 using ItlaTv.Domain.Result;
 using ItlaTv.Persistence.Base;
-using ItlaTv.Persistence.Interfaces;
+using ItlaTv.Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence.Context;

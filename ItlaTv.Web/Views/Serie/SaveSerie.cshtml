@@ -44,7 +44,7 @@
                         <div class="mb-3">
                             <label asp-for="SecondaryGenre" class="form-label">Genero Secundario</label>
                             <select asp-for="SecondaryGenre" class="form-select bg-dark text-light">
-                                <option>Seleccione un genero</option>
+                                <option value="0">Seleccione un genero</option>
                                 @foreach (ItlaTv.Application.ViewModels.GenreVm.GenreViewModel genre in ViewBag.Genres)
                                 {
                                     <option value="@genre.Id">@genre.Name</option>

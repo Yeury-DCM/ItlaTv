@@ -1,13 +1,11 @@
 ﻿
 using ItlaTv.Application.Interfaces;
-using ItlaTv.Application.ViewModels.GenreVm;
+
 using ItlaTv.Application.ViewModels.SerieVm;
 using ItlaTv.Domain.Entities;
 using ItlaTv.Domain.Result;
-using ItlaTv.Persistence.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Cryptography.X509Certificates;
+using ItlaTv.Domain.Repositories.Interfaces;
+
 
 namespace ItlaTv.Application.Services
 {
@@ -163,7 +161,7 @@ namespace ItlaTv.Application.Services
             //Name filter
 
 
-            if (!filter.Name.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(filter.Name))
             {
                 listViewModels = listViewModels.Where(serie => serie.Name.ToLower()!.Contains(filter.Name.ToLower()!)).ToList();
             }
@@ -179,8 +177,9 @@ namespace ItlaTv.Application.Services
 
             //Genre filter
 
-            if (!filter.GenresIds.IsNullOrEmpty())
+            if (filter.GenresIds != null && filter.GenresIds.Count > 0)
             {
+              
                 listViewModels = listViewModels
                     .Where(serie => serie.Genres!.Any(genre => filter.GenresIds!.Contains(genre.ID)))
                     .ToList();

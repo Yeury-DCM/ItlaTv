@@ -3,7 +3,7 @@ using ItlaTv.Application.Interfaces;
 using ItlaTv.Application.ViewModels.GenreVm;
 using ItlaTv.Domain.Entities;
 using ItlaTv.Domain.Result;
-using ItlaTv.Persistence.Interfaces;
+using ItlaTv.Domain.Repositories.Interfaces;
 
 namespace ItlaTv.Application.Services
 {

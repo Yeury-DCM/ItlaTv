@@ -1,6 +1,6 @@
 ﻿using ItlaTv.Domain.Result;
 
-namespace ItlaTv.Domain.Repositories
+namespace ItlaTv.Domain.Repositories.Base
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {
@@ -8,7 +8,7 @@ namespace ItlaTv.Domain.Repositories
         Task<OperationResult> Update(TEntity entity);
         Task<OperationResult> Delete(TEntity entity);
         Task<OperationResult> GetAll();
-        Task<OperationResult> GetById(int id);  
+        Task<OperationResult> GetById(int id);
 
     }
 }
