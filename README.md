@@ -63,20 +63,6 @@ ITLATV
 - **C# y .NET** como tecnologías principales.
 - **Razor y Bootstrap** para la interfaz de usuario.
 
-## 🚀 **Cómo Ejecutar el Proyecto**
-1. Restaurar paquetes NuGet:
-   ```sh
-   dotnet restore
-   ```
-2. Aplicar migraciones:
-   ```sh
-   dotnet ef database update
-   ```
-3. Ejecutar la aplicación:
-   ```sh
-   dotnet run --project ItlaTv.Web
-   ```
-
 ---
 
 Este diseño garantiza una **alta mantenibilidad, testabilidad y escalabilidad**, permitiendo un desarrollo ágil y estructurado. 💡🔥
