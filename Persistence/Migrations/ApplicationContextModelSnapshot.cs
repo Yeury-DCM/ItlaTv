@@ -96,7 +96,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("SeriesID");
 
-                    b.ToTable("SerieGenre");
+                    b.ToTable("SerieGenre", (string)null);
                 });
 
             modelBuilder.Entity("ItlaTv.Domain.Entities.Serie", b =>

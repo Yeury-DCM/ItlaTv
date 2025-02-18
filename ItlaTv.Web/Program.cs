@@ -25,9 +25,6 @@ builder.Services.AddTransient<ISerieService, SerieService>();
 builder.Services.AddTransient<IGenreService, GenreService>();
 builder.Services.AddTransient<IStudioService, StudioService>();
 
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
